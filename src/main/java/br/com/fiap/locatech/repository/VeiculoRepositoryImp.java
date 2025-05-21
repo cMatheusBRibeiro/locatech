@@ -8,11 +8,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@AllArgsConstructor
 @Repository
 public class VeiculoRepositoryImp implements VeiculoRepository {
 
     private final JdbcClient jdbcClient;
+
+    public VeiculoRepositoryImp(JdbcClient jdbcClient) {
+        this.jdbcClient = jdbcClient;
+    }
 
     @Override
     public Optional<Veiculo> findById(long id) {
