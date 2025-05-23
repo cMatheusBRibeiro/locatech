@@ -23,7 +23,7 @@ public class VeiculoService {
 
     public List<Veiculo> findAllVeiculos(int page, int size) {
         int offset = (page - 1) * size;
-        return veiculoRepository.findAll(offset, size);
+        return veiculoRepository.findAll(size, offset);
     }
 
     public void save(Veiculo veiculo) {
