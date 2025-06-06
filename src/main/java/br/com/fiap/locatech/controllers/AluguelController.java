@@ -1,5 +1,6 @@
 package br.com.fiap.locatech.controllers;
 
+import br.com.fiap.locatech.dtos.AluguelRequestDTO;
 import br.com.fiap.locatech.entities.Aluguel;
 import br.com.fiap.locatech.services.AluguelService;
 import org.slf4j.Logger;
@@ -31,16 +32,18 @@ public class AluguelController implements AluguelApi {
         return ResponseEntity.ok(alugueis);
     }
 
-    public ResponseEntity<Optional<Aluguel>> findAluguelById(
+    public ResponseEntity<Aluguel> findAluguelById(
             Long id
     ) {
         logger.info("GET -> /alugueis/{}", id);
+
         var aluguel = aluguelService.findAluguelById(id);
+
         return ResponseEntity.ok(aluguel);
     }
 
     public ResponseEntity<Void> saveAluguel(
-            Aluguel aluguel
+            AluguelRequestDTO aluguel
     ) {
         logger.info("POST -> /alugueis");
         aluguelService.save(aluguel);
@@ -49,7 +52,7 @@ public class AluguelController implements AluguelApi {
 
     public ResponseEntity<Void> updateAluguel(
             Long id,
-            Aluguel aluguel
+            AluguelRequestDTO aluguel
     ) {
         logger.info("PUT -> /alugueis/{}", id);
         aluguelService.update(aluguel, id);

@@ -1,5 +1,6 @@
 package br.com.fiap.locatech.controllers;
 
+import br.com.fiap.locatech.dtos.AluguelRequestDTO;
 import br.com.fiap.locatech.entities.Aluguel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,19 +18,19 @@ public interface AluguelApi {
     );
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Aluguel>> findAluguelById(
+    public ResponseEntity<Aluguel> findAluguelById(
             @PathVariable("id") Long id
     );
 
     @PostMapping
     public ResponseEntity<Void> saveAluguel(
-            @RequestBody Aluguel pessoa
+            @RequestBody AluguelRequestDTO aluguel
     );
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateAluguel(
             @PathVariable Long id,
-            @RequestBody Aluguel pessoa
+            @RequestBody AluguelRequestDTO aluguel
     );
 
     @DeleteMapping("/{id}")

@@ -29,7 +29,7 @@ public class AluguelRepositoryImp implements AluguelRepository {
                     p.nome AS pessoa_nome,
                     a.data_inicio AS data_inicio,
                     a.data_fim AS data_fim,
-                    a.valor_total AS valor_total,
+                    a.valor_total AS valor_total
                 FROM
                     alugueis a
                 INNER JOIN
@@ -59,7 +59,7 @@ public class AluguelRepositoryImp implements AluguelRepository {
                     p.nome AS pessoa_nome,
                     a.data_inicio AS data_inicio,
                     a.data_fim AS data_fim,
-                    a.valor_total AS valor_total,
+                    a.valor_total AS valor_total
                 FROM
                     alugueis a
                 INNER JOIN
@@ -84,7 +84,7 @@ public class AluguelRepositoryImp implements AluguelRepository {
         return jdbcClient
                 .sql("""
                 INSERT INTO alugueis
-                    (pessoaId, veiculoId, dataInicio, dataFim, valorTotal)
+                    (pessoa_id, veiculo_id, data_inicio, data_fim, valor_total)
                 VALUES
                     (:pessoaId, :veiculoId, :dataInicio, :dataFim, :valorTotal)
                 """)
@@ -102,11 +102,11 @@ public class AluguelRepositoryImp implements AluguelRepository {
                 .sql("""
                 UPDATE alugueis
                 SET
-                    pessoaId = :pessoaId
-                    veiculoId = :veiculoId
-                    dataInicio = :dataInicio
-                    dataFim = :dataFim
-                    valorTotal = :valorTotal
+                    pessoa_id = :pessoaId,
+                    veiculo_id = :veiculoId,
+                    data_inicio = :dataInicio,
+                    data_fim = :dataFim,
+                    valor_total = :valorTotal
                 WHERE
                     id = :id
                 """)
