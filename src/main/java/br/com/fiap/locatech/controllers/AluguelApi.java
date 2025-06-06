@@ -2,6 +2,7 @@ package br.com.fiap.locatech.controllers;
 
 import br.com.fiap.locatech.dtos.AluguelRequestDTO;
 import br.com.fiap.locatech.entities.Aluguel;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,7 @@ public interface AluguelApi {
 
     @PostMapping
     public ResponseEntity<Void> saveAluguel(
+            @Valid
             @RequestBody AluguelRequestDTO aluguel
     );
 
